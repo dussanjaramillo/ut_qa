@@ -1,0 +1,7 @@
+ARCHIVO CARGADO20140310_PASENA_023_F.TXT, Cargado con éxito.
+Cargue de estructura a base de datos.
+----------------------------------------------------
+Número total lineas cargadas: 681
+Número total Archivos cargados: 0
+Número total Archivos no cargados: 0
+----------------------------------------------------

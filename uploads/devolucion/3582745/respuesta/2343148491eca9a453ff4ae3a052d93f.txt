@@ -1,0 +1,13 @@
+<table style="max-width: 100%; border-collapse: collapse; border-spacing: 0px; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; background-color: #e6e6e6;" border="0" cellspacing="0" align="center">
+<tbody>
+<tr>
+<td align="center">
+<h2 style="margin: 10px 0px; font-family: inherit; line-height: 40px; color: #fc7323; text-rendering: optimizelegibility; font-size: 31.5px;">Respuesta de Comunicaci&oacute;n</h2>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>

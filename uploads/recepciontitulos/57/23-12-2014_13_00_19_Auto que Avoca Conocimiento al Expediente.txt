@@ -1,0 +1,40 @@
+<p>&nbsp;</p>
+<table border="1" width="100%" align="center">
+<tbody>
+<tr>
+<td>
+<div align="center"><strong>Identificaci&oacute;n</strong></div>
+</td>
+<td>
+<div align="center"><strong>Ejecutado</strong></div>
+</td>
+<td>
+<div align="center"><strong>Concepto</strong></div>
+</td>
+<td>
+<div align="center"><strong>Telefono</strong></div>
+</td>
+<td>
+<div align="center"><strong>Direccion</strong></div>
+</td>
+<td>
+<div align="center"><strong>Saldo Deuda</strong></div>
+</td>
+</tr>
+<tr>
+<td>90103881</td>
+<td>ABUCHAIBE Y ASOCIADOS LTDA.</td>
+<td>Aportes Parafiscales</td>
+<td>000</td>
+<td>CR 53 No 55 - 27</td>
+<td>3917</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

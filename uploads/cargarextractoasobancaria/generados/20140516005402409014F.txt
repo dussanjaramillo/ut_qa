@@ -1,0 +1,9 @@
+ARCHIVO CARGADO20140516_PASENA_023_F.TXT, Cargado con éxito.
+Cargue de estructura a base de datos.
+20140516005402409014F.txt, Cargado con éxito.
+Cargue de estructura a base de datos.
+----------------------------------------------------
+Número total lineas cargadas: 75
+Número total Archivos cargados: 1
+Número total Archivos no cargados: 0
+----------------------------------------------------

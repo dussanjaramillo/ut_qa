@@ -1,0 +1,5 @@
+<p>Generar requerimiento</p>
+<p>Devolver requerimiento</p>
+<p>Requerimiento corregido</p>
+<p>Ok secretario</p>
+<p>Ok coordinador</p>
