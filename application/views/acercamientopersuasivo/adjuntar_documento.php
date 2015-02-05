@@ -30,9 +30,9 @@ if (isset($custom_error))
             ?>    
 
         </div>
-        <?php echo form_close(); ?>
+    </form>
+   <form name="myform2" id="myform2" action="<?php echo base_url('requerimientoacercamiento/guardar_requerimiento_aprobado') ?>">
         <div id="contenido_tinymce">
-            <form name="myform2" id="myform2" action="<?php echo base_url('requerimientoacercamiento/guardar_requerimiento_aprobado') ?>">
                 <input type="hidden" name="cod_cobro"id="cod_cobro" value="<?php echo $post['cod_cobro'] ?>">
                 <input type="hidden" name="cod_proceso"id="cod_proceso" value="<?php echo $post['cod_proceso'] ?>">
                 <input type="hidden" name="ruta" id="ruta" value="<?php $post['ruta'] ?>">
@@ -40,13 +40,13 @@ if (isset($custom_error))
                 <input type="hidden" name="nit_empresa" id="nit_empresa" value="<?php echo $cabecera['IDENTIFICACION'] ?>">
                 <input type="hidden" name="nombre" id="nombre" value="">
                 <input type="hidden" name="button" id="button" value="" />
-                <textarea name="informacion" id="informacion" style="width:auto; height: 300px" readonly="readonly" disabled="disabled" >
-                    <?php echo $documento ?>
+                <textarea name="informacion" id="informacion" style="width:auto; height: 300px" >
+                    <?php echo "dd" ?>
                 </textarea>
         </div>
         <div id="div_botones" style="text-align:center; margin-top: 20px;display: block">               
 
-            <button id="pdf"  class='btn btn-info' onclick="generar_pdf();" >PDF</button>
+             <input type="button" name="pdf"  id="pdf"  class='btn btn-info' value="PDF" onclick="generar_pdf();" >
             <input type="button" name="continuar" id="continuar" value="Continuar" class='btn btn-success' onclick="f_continuar();">
             <button id="ver_observaciones" class='btn btn-info'>Comentarios </button>  
             <input id="cancelar" class="btn btn-warning" type="submit" value=" Cancelar" name="cancelar">
@@ -76,9 +76,12 @@ if (isset($custom_error))
         </div>
         </p>
 </div>
-<form id="form" name="form" target = "_blank"  method="post" action="<?php echo base_url($url_generar_pdf) ?>">
+</form>
+
+ <form id="form1" name="form1" target = "_blank"  method="post" action="<?php echo base_url('index.php/acercamientopersuasivo/pdf') ?>">
     <textarea id="descripcion_pdf" name="descripcion_pdf" style="width: 100%;height: 300px; display:none"></textarea>  
-    <input type="hidden" name="nombre_archivo" id="nombre_archivo">
+    <input type="hidden" name="nombre_archivo" id="nombre_archivo" value="RequerimientoAcercamiento">
+    
 </form>
 <div id="ajax_load" class="ajax_load" style="display: none">
     <div class="preload" id="preload" ></div><img  id="load" class="load" src="<?php echo base_url('img/27.gif'); ?>" width="128" height="128" />
@@ -108,7 +111,7 @@ if (isset($custom_error))
             language: 'es',
             selector: "textarea#informacion",
             theme: "modern",
-            readonly:1,
+            readonly:0,
             plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
@@ -131,23 +134,53 @@ if (isset($custom_error))
         var nombre_archivo = "RequerimientoAcercamiento_Revisado_" + nombre_archivo;
         document.getElementById("nombre_archivo").value = nombre_archivo;
     });
-
-    function generar_pdf()
-    {
-
-        var url = "<?php echo base_url('index.php/requerimientoacercamiento/pdf') ?>";
-        var informacion = tinymce.get('informacion').getContent();
-        if (informacion == '' || informacion == false)
+function base64_encode(data)
         {
-            mierror = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' + 'Debe ingresar la informaciÃ³n del Requerimiento de Acercamiento en el Texto Enriquecido' + '</div>';
-            document.getElementById("respuesta").innerHTML = mierror;
-            $("#respuesta").fadeOut(3000);
-            return false;
+            var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+            var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
+                    ac = 0,
+                    enc = '',
+                    tmp_arr = [];
+            if (!data)
+            {
+                return data;
+            }
+            do
+            {
+                o1 = data.charCodeAt(i++);
+                o2 = data.charCodeAt(i++);
+                o3 = data.charCodeAt(i++);
+                bits = o1 << 16 | o2 << 8 | o3;
+                h1 = bits >> 18 & 0x3f;
+                h2 = bits >> 12 & 0x3f;
+                h3 = bits >> 6 & 0x3f;
+                h4 = bits & 0x3f;
+                tmp_arr[ac++] = b64.charAt(h1) + b64.charAt(h2) + b64.charAt(h3) + b64.charAt(h4);
+            }
+            while (i < data.length);
+            enc = tmp_arr.join('');
+            var r = data.length % 3;
+            return (r ? enc.slice(0, r - 3) : enc) + '==='.slice(r || 3);
         }
-        document.getElementById("descripcion_pdf").value = informacion;
-        $("#form").submit();
-    }
-
+         function generar_pdf()
+        {
+            document.getElementById("nombre_archivo").value = nombre_archivo;
+            var url = "<?php echo base_url('index.php/requerimientoacercamiento/pdf') ?>";
+            var informacion = tinymce.get('informacion').getContent();
+            
+            if (informacion == '' || informacion == false)
+            {
+                mierror = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' + 'Debe ingresar la informaciÃ³n del Requerimiento de Acercamiento en el Texto Enriquecido' + '</div>';
+                document.getElementById("respuesta").innerHTML = mierror;
+                $("#respuesta").fadeOut(3000);
+                return false;
+            }
+          
+            document.getElementById("descripcion_pdf").value = base64_encode(informacion);
+            var info= document.getElementById("descripcion_pdf").value;
+           
+            $("#form1").submit();
+        }
     function f_continuar()
     {
         $("#contenido_tinymce").hide();
